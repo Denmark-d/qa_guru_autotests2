@@ -48,6 +48,8 @@ public class StudentRegistrationForm {
 
 //Select State
         //$("#state").click();
+        //$(".css-1wa3eu0-placeholder").click();
+
 
 
         //$("#stateCity-wrapper").$(byText("Uttar Pradesh")).click();
