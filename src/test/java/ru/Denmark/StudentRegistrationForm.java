@@ -6,8 +6,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
+import java.io.File;
 import java.time.temporal.JulianFields;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -21,6 +23,8 @@ public class StudentRegistrationForm {
     void firsttest(){
         System.out.println("First Test");
         open("https://demoqa.com/automation-practice-form");
+        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+
 //      firstName
         $("#firstName").setValue("Danny");
 //      lastName
@@ -37,28 +41,31 @@ public class StudentRegistrationForm {
         $(".react-datepicker__year-select").selectOption("1988");
         $(".react-datepicker__day--029:not(.react-datepicker__day--outside-month)").click();
         //Subjects
-        $("#subjectsInput").setValue("Пример").pressEnter();
+        $("#subjectsInput").setValue("history").pressEnter();
 //      Выбор хобби
        //$("[for=hobbies-checkbox-1]").click(); не работает
-        //$("[for='hobbies-checkbox-1']").click();
+        $("[for='hobbies-checkbox-1']").click();
+        //$("#hobbiesWrapper").$(byText("Sports")).click();
 //Select picture
-        //$("#uploadPicture").uploadFromClasspath("1 задание 2021-12-10.png");
+        //("#uploadPicture").uploadFromClasspath("custom");-work
+        $("#uploadPicture").uploadFromClasspath("custom/1 .png");
+        //$("#uploadPicture").uploadFile(new File("src/test/resources/custom"));-work
 // Current Address
         $("#currentAddress").setValue("Наметкина");
 
 //Select State
-        //$("#state").click();
-        //$(".css-1wa3eu0-placeholder").click();
+        $("#state").scrollTo().click();
+        $("#stateCity-wrapper").$(byText("Uttar Pradesh")).click();
+        // Select City
+        $("#city").click();
+        $("#stateCity-wrapper").$(byText("Lucknow")).click();
+        $("#submit").scrollTo().click();
 
 
-
-        //$("#stateCity-wrapper").$(byText("Uttar Pradesh")).click();
-        //$("#city").click();
-        //$("#stateCity-wrapper").$(byText("")).click();
-        //$("#submit").click();
-// Select City
-
-
+$(".table table-dark table-striped table-bordered table-hover").isDisplayed();
+$("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
+$(".table-responsive").shouldHave(text("Danny Dan"),text("Danny@mail.ru"));
+$(".table-responsive").shouldHave(text("8937170312"),text("29 July,1988"),text("history"),text("1 .png"),text("Наметкина"),text("Uttar Pradesh Lucknow"));
 
 
     }
