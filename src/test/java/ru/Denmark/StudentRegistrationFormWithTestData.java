@@ -46,7 +46,7 @@ public class StudentRegistrationFormWithTestData {
         $("#submit").scrollTo().click();
         $(".table table-dark table-striped table-bordered table-hover").isDisplayed();
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(text(firstName + " " + lastName),text(email));
+        $(".table-responsive").shouldHave(text(firstName + " " + lastName),text(userEmail));
         $(".table-responsive").shouldHave(text("8937170312"),text("29 July,1988"),text("history"),
                                                     text("1 .png"),text("Наметкина"),text("Uttar Pradesh Lucknow"));
 
